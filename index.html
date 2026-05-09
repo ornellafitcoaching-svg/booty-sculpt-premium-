@@ -1058,7 +1058,10 @@ body{
       </div>
     </a>
   </div>
-  <a href="#glossaire" style="display:block;text-align:center;margin-top:8px;font-size:.8rem;color:var(--rouge);text-decoration:none;font-weight:600">📖 Voir le glossaire des termes →</a>
+  <div style="display:flex;gap:10px;margin-top:8px">
+    <a href="#glossaire" style="flex:1;display:block;text-align:center;font-size:.8rem;color:var(--rouge);text-decoration:none;font-weight:600;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:10px">📖 Glossaire →</a>
+    <a href="#faq" onclick="document.getElementById('faq').querySelector('.collapse-btn').click();setTimeout(function(){document.getElementById('faq').scrollIntoView({behavior:'smooth'})},100);return false" style="flex:1;display:block;text-align:center;font-size:.8rem;color:var(--rouge);text-decoration:none;font-weight:600;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:10px">❓ FAQ →</a>
+  </div>
 </section>
 
 <!-- GLOSSAIRE -->
@@ -2208,7 +2211,7 @@ body{
 </section>
 
 <!-- FAQ -->
-<section class="sec sec-alt">
+<section class="sec sec-alt" id="faq">
   <button class="collapse-btn" onclick="toggleCollapse(this)">
     <span>❓ Questions fréquentes</span><span class="chev">▼</span>
   </button>

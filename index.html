@@ -46,8 +46,33 @@ body{
   max-width:var(--max);margin:0 auto;
   -webkit-font-smoothing:antialiased;
   line-height:1.65;
-  padding-bottom:100px;
+  padding-bottom:80px;
 }
+
+/* ─── BOTTOM NAV ─── */
+.bottom-nav{
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);
+  width:100%;max-width:var(--max);
+  background:rgba(254,251,248,.96);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-top:1px solid var(--border);
+  display:flex;align-items:stretch;
+  z-index:200;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.bnav-item{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:3px;padding:10px 4px;
+  text-decoration:none;border:none;background:none;
+  cursor:pointer;font-family:'DM Sans',sans-serif;
+  -webkit-tap-highlight-color:transparent;
+  transition:opacity .15s;
+}
+.bnav-item:active{opacity:.6}
+.bnav-icon{font-size:1.3rem;line-height:1}
+.bnav-label{font-size:.6rem;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.bnav-item.wa .bnav-icon{font-size:1.5rem}
+.bnav-item.wa .bnav-label{color:#25D366}
 
 /* ─── NAV ─── */
 .topbar{
@@ -2398,9 +2423,27 @@ document.querySelectorAll('.btn-done').forEach(function(btn){
   }
 });
 </script>
-<div style="position:fixed;bottom:20px;right:16px;z-index:999;display:flex;flex-direction:column;gap:8px;align-items:flex-end">
-  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20fais%20ton%20programme%20Booty%20Sculpt%20et%20j%27ai%20une%20question" target="_blank" style="background:#25D366;color:white;border-radius:50px;padding:12px 18px;text-decoration:none;font-size:13px;font-weight:700;box-shadow:0 4px 15px rgba(37,211,102,0.4);display:flex;align-items:center;gap:8px;white-space:nowrap">💬 Question à Ornella</a>
-  <a href="https://www.ornellafitcoaching.com/offres.html" target="_blank" style="background:#C96358;color:white;border-radius:50px;padding:12px 18px;text-decoration:none;font-size:13px;font-weight:700;box-shadow:0 4px 15px rgba(201,99,88,0.4);display:flex;align-items:center;gap:8px;white-space:nowrap">🚀 Coaching personnalisé</a>
-</div>
+<nav class="bottom-nav" aria-label="Navigation rapide">
+  <button class="bnav-item" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Accueil">
+    <span class="bnav-icon">🏠</span>
+    <span class="bnav-label">Accueil</span>
+  </button>
+  <button class="bnav-item" onclick="document.getElementById('programme').scrollIntoView({behavior:'smooth'})" aria-label="Programme">
+    <span class="bnav-icon">💪</span>
+    <span class="bnav-label">Programme</span>
+  </button>
+  <button class="bnav-item" onclick="document.getElementById('planning').scrollIntoView({behavior:'smooth'})" aria-label="Planning">
+    <span class="bnav-icon">📅</span>
+    <span class="bnav-label">Planning</span>
+  </button>
+  <button class="bnav-item" onclick="document.getElementById('suivi').scrollIntoView({behavior:'smooth'})" aria-label="Mesures">
+    <span class="bnav-icon">📏</span>
+    <span class="bnav-label">Mesures</span>
+  </button>
+  <a class="bnav-item wa" href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20fais%20ton%20programme%20Booty%20Sculpt%20et%20j%27ai%20une%20question" target="_blank" aria-label="WhatsApp">
+    <span class="bnav-icon">💬</span>
+    <span class="bnav-label">Aide</span>
+  </a>
+</nav>
 </body>
 </html>

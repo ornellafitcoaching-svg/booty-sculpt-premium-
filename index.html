@@ -46,6 +46,7 @@ body{
   max-width:var(--max);margin:0 auto;
   -webkit-font-smoothing:antialiased;
   line-height:1.65;
+  padding-bottom:100px;
 }
 
 /* ─── NAV ─── */
@@ -2193,7 +2194,7 @@ body{
     <div style="display:flex;flex-direction:column;gap:10px">
       <a href="https://wa.me/33756834626?text=Ornella%20j%27ai%20termin%C3%A9%20le%20programme%20Booty%20Sculpt%20!%20Je%20veux%20te%20montrer%20mes%20r%C3%A9sultats%20%F0%9F%8D%91%F0%9F%94%A5" target="_blank" style="background:white;color:#C96358;border-radius:20px;padding:12px 20px;text-decoration:none;font-size:13px;font-weight:800;display:block">📸 Envoyer ma transformation à Ornella →</a>
       <a href="https://wa.me/33756834626?text=Ornella%20j%27ai%20fini%20Booty%20Sculpt%20et%20je%20veux%20continuer%20!%20Quelles%20sont%20tes%20offres%20de%20coaching%20%3F" target="_blank" style="background:rgba(255,255,255,0.2);color:white;border:2px solid white;border-radius:20px;padding:12px 20px;text-decoration:none;font-size:13px;font-weight:700;display:block">💪 Continuer avec un coaching personnalisé →</a>
-      <a href="https://g.page/r/ornellafitcoaching/review" target="_blank" style="background:rgba(255,255,255,0.2);color:white;border:2px solid white;border-radius:20px;padding:12px 20px;text-decoration:none;font-size:13px;font-weight:700;display:block">⭐ Laisser un avis Google →</a>
+      <a href="https://share.google/CqEJ3AQHKOTjpJDIi" target="_blank" style="background:rgba(255,255,255,0.2);color:white;border:2px solid white;border-radius:20px;padding:12px 20px;text-decoration:none;font-size:13px;font-weight:700;display:block">⭐ Laisser un avis Google →</a>
     </div>
   </div>
   <div class="final-copy">© 2026 Ornella Fit Coaching · ornellafitcoaching.com</div>
@@ -2210,10 +2211,11 @@ window.addEventListener('scroll',function(){
 function togglePhase(btn){
   var panel=btn.nextElementSibling;
   var isOpen=btn.classList.contains('open');
-  document.querySelectorAll('.phase-btn').forEach(function(b){b.classList.remove('open')});
+  document.querySelectorAll('.phase-btn').forEach(function(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');});
   document.querySelectorAll('.phase-panel').forEach(function(p){p.classList.remove('open')});
   if(!isOpen){
     btn.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
     panel.classList.add('open');
     setTimeout(function(){btn.scrollIntoView({behavior:'smooth',block:'nearest'})},80);
   }
@@ -2224,10 +2226,11 @@ function toggleItem(btn){
   var panel=btn.nextElementSibling;
   var isOpen=btn.classList.contains('open');
   var phase=btn.closest('.phase-panel');
-  phase.querySelectorAll('.seance-btn').forEach(function(b){b.classList.remove('open')});
+  phase.querySelectorAll('.seance-btn').forEach(function(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');});
   phase.querySelectorAll('.seance-panel').forEach(function(p){p.classList.remove('open')});
   if(!isOpen){
     btn.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
     panel.classList.add('open');
     setTimeout(function(){btn.scrollIntoView({behavior:'smooth',block:'nearest'})},80);
   }
@@ -2386,9 +2389,15 @@ document.addEventListener('DOMContentLoaded',updateGlobalProgress);
 document.querySelectorAll('.btn-done').forEach(function(btn){
   var m=btn.getAttribute('onclick').match(/\d+/);
   if(m&&localStorage.getItem('bs_s'+m[0])==='done'){
+    var num=m[0];
     btn.classList.add('done');
-    btn.textContent='✓ Séance '+m[0]+' terminée !';
+    btn.textContent='✓ Séance '+num+' terminée !';
     btn.closest('.seance-wrap').querySelector('.seance-btn').classList.add('done-state');
+    var waDiv=document.createElement('div');
+    waDiv.id='wa-cta-'+num;
+    waDiv.style.cssText='margin-top:12px;padding:12px;background:#F0FFF4;border-radius:10px;border:1px solid #C3E6CB;text-align:center';
+    waDiv.innerHTML='<p style="font-size:12px;color:#2D6A4F;margin-bottom:8px">💪 Séance terminée ! Partage ton ressenti avec Ornella</p><a href="https://wa.me/33756834626?text=Ornella%20je%20viens%20de%20terminer%20ma%20s%C3%A9ance%20Booty%20Sculpt%20!%20%F0%9F%8D%91" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:white;border-radius:20px;padding:8px 16px;text-decoration:none;font-size:12px;font-weight:700">💬 Envoyer mon ressenti →</a>';
+    btn.parentNode.insertBefore(waDiv,btn.nextSibling);
   }
 });
 </script>

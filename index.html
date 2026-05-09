@@ -623,6 +623,10 @@ body{
       <div id="progress-bar" style="height:100%;background:linear-gradient(90deg,#C96358,#E8A090);border-radius:4px;width:0%;transition:width .5s ease"></div>
     </div>
     <div id="progress-message" style="font-size:11px;color:#7A6E6E;margin-top:4px;text-align:center"></div>
+    <div style="text-align:right;margin-top:6px">
+      <button onclick="exportProgression()" style="background:none;border:none;font-size:11px;color:#C96358;font-weight:700;cursor:pointer;padding:0;font-family:inherit">📋 Copier ma progression</button>
+      <span id="prog-confirm" style="display:none;font-size:11px;color:#4A7A1E;font-weight:600;margin-left:8px">✅ Copié !</span>
+    </div>
   </div>
 </div>
 
@@ -2247,6 +2251,35 @@ document.addEventListener('DOMContentLoaded',function(){
 
 // Suivi persistence
 function saveSuivi(el,key){localStorage.setItem('suivi_'+key,el.value);}
+
+function exportProgression(){
+  var noms=['Fessiers & Hanches','Fessiers & Stabilité','Volume & Brûlure','Élastique & Volume','Isométrique & Pulsé','Plyométrie & Drop Set','Isométrique & HIIT','Techniques Avancées','Complexes & Drop Sets','21s & HIIT Final','Records & Intensité Max','Bilan & Clôture'];
+  var lines=['🍑 BOOTY SCULPT 2026 — Ma progression',''];
+  var done=0;
+  for(var i=1;i<=12;i++){
+    var isDone=localStorage.getItem('bs_s'+i)==='done';
+    if(isDone) done++;
+    lines.push((isDone?'✅':'⬜')+' Séance '+i+' — '+noms[i-1]);
+  }
+  lines.push('');
+  lines.push('Progression : '+done+' / 12 séances ('+Math.round(done/12*100)+'%)');
+  lines.push('Sauvegardé le '+new Date().toLocaleDateString('fr-FR'));
+  var text=lines.join('\n');
+  var confirm=document.getElementById('prog-confirm');
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){
+      confirm.style.display='inline';
+      setTimeout(function(){confirm.style.display='none';},3000);
+    });
+  } else {
+    var ta=document.createElement('textarea');
+    ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');
+    document.body.removeChild(ta);
+    confirm.style.display='inline';
+    setTimeout(function(){confirm.style.display='none';},3000);
+  }
+}
 
 function exportMesures(){
   var sections=[

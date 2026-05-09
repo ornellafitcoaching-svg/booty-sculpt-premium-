@@ -1087,13 +1087,58 @@ body{
   </div>
 </section>
 
+<!-- INTRO SECTION -->
+<div id="intro-section" style="max-width:680px;margin:0 auto 32px;padding:0 16px">
+  <div style="background:linear-gradient(135deg,#C96358,#9A4040);border-radius:16px;padding:24px;color:white;margin-bottom:16px;text-align:center">
+    <div style="font-size:28px;margin-bottom:8px">🍑</div>
+    <h2 style="font-size:20px;font-weight:800;margin-bottom:8px">Bienvenue dans Booty Sculpt 2026</h2>
+    <p style="font-size:14px;opacity:.9;line-height:1.6">12 séances · 4 phases · 8 semaines pour transformer tes fessiers</p>
+  </div>
+  <div style="background:white;border-radius:16px;padding:20px;margin-bottom:12px;border:1px solid #F0E8E0">
+    <h3 style="font-size:15px;font-weight:700;color:#1E1616;margin-bottom:14px">📖 Comment utiliser ce programme</h3>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:#C96358;color:white;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">1</div>
+        <p style="font-size:13px;color:#3D2B24;line-height:1.5">Fais <strong>3 séances par semaine</strong> — avec au moins 1 jour de repos entre chaque séance.</p>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:#C96358;color:white;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">2</div>
+        <p style="font-size:13px;color:#3D2B24;line-height:1.5">Commence <strong>toujours par la routine d'activation</strong> (4 exercices) avant chaque séance.</p>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:#C96358;color:white;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">3</div>
+        <p style="font-size:13px;color:#3D2B24;line-height:1.5">Clique sur <strong>"Voir la démonstration"</strong> pour chaque exercice technique avant de commencer.</p>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:#C96358;color:white;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">4</div>
+        <p style="font-size:13px;color:#3D2B24;line-height:1.5">Coche <strong>"Marquer comme terminée"</strong> après chaque séance — ta progression est sauvegardée.</p>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:#C96358;color:white;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0">5</div>
+        <p style="font-size:13px;color:#3D2B24;line-height:1.5">Tu as une question ? <strong>WhatsApp Ornella</strong> directement via le bouton en haut.</p>
+      </div>
+    </div>
+  </div>
+  <div style="background:white;border-radius:16px;padding:20px;margin-bottom:12px;border:1px solid #F0E8E0">
+    <h3 style="font-size:15px;font-weight:700;color:#1E1616;margin-bottom:12px">🏋️ Matériel recommandé</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="background:#FAF0EE;border-radius:10px;padding:10px;font-size:12px;color:#3D2B24;text-align:center">🔴 Élastiques de résistance</div>
+      <div style="background:#FAF0EE;border-radius:10px;padding:10px;font-size:12px;color:#3D2B24;text-align:center">🏋️ Haltères (optionnel)</div>
+      <div style="background:#FAF0EE;border-radius:10px;padding:10px;font-size:12px;color:#3D2B24;text-align:center">🧘 Tapis de sol</div>
+      <div style="background:#FAF0EE;border-radius:10px;padding:10px;font-size:12px;color:#3D2B24;text-align:center">⏱️ Chronomètre</div>
+    </div>
+    <p style="font-size:12px;color:#7A6E6E;margin-top:8px;font-style:italic">Tout le programme peut se faire sans matériel — les élastiques amplifient les résultats.</p>
+  </div>
+  <button onclick="document.getElementById('phases-section').scrollIntoView({behavior:'smooth'})" style="width:100%;padding:16px;background:#C96358;color:white;border:none;border-radius:12px;font-size:16px;font-weight:800;cursor:pointer;letter-spacing:.02em">Je commence le programme →</button>
+</div>
+
 <!-- PROGRAMME INTERACTIF -->
 <section class="sec sec-alt" id="programme">
   <div class="sec-label">Les séances</div>
   <h2 class="sec-title">12 séances.<br><em>Commençons.</em></h2>
   <div class="sec-divider"></div>
   <p style="font-size:.88rem;color:var(--muted);margin-bottom:24px">Ouvre une phase → une séance → et commence. Chaque exercice technique a sa vidéo de démonstration.</p>
-  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
+  <div id="phases-section" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
   <button onclick="openPhaseAndScroll(1)" style="flex:1;padding:10px;background:#FAF0EE;border:1.5px solid #C96358;border-radius:8px;color:#C96358;font-size:13px;font-weight:700;cursor:pointer;min-width:120px">Phase 1 — Activation</button>
   <button onclick="openPhaseAndScroll(2)" style="flex:1;padding:10px;background:#FAF0EE;border:1.5px solid #C96358;border-radius:8px;color:#C96358;font-size:13px;font-weight:700;cursor:pointer;min-width:120px">Phase 2 — Volume</button>
   <button onclick="openPhaseAndScroll(3)" style="flex:1;padding:10px;background:#FAF0EE;border:1.5px solid #C96358;border-radius:8px;color:#C96358;font-size:13px;font-weight:700;cursor:pointer;min-width:120px">Phase 3 — Sculpt</button>

@@ -2313,12 +2313,14 @@ function exportMesures(){
     {label:'Semaine 5 — Mi-programme',prefix:'3'},
     {label:'Semaine 8 — Fin du programme',prefix:'4'}
   ];
-  var champs=['Poids (kg)','Tour de hanches (cm)','Tour de taille (cm)','Tour de cuisse (cm)','Ressenti énergie /10'];
+  var champsBase=['Poids (kg)','Tour de hanches (cm)','Tour de taille (cm)','Tour de cuisse (cm)','Ressenti énergie /10'];
+  var champsExtra={'1':['Ressenti corps /10'],'2':['Courbatures ressenties'],'3':['Résultats visibles ?'],'4':['Transformation ressentie']};
   var lines=['🍑 BOOTY SCULPT 2026 — Mes mesures',''];
   sections.forEach(function(s){
     lines.push('📍 '+s.label);
     var hasData=false;
-    champs.forEach(function(c){
+    var tous=champsBase.concat(champsExtra[s.prefix]||[]);
+    tous.forEach(function(c){
       var v=localStorage.getItem('suivi_'+s.prefix+'_'+c);
       if(v){lines.push('  • '+c+' : '+v);hasData=true;}
     });
@@ -2422,6 +2424,7 @@ document.querySelectorAll('.btn-done').forEach(function(btn){
     btn.parentNode.insertBefore(waDiv,btn.nextSibling);
   }
 });
+updateGlobalProgress();
 </script>
 <nav class="bottom-nav" aria-label="Navigation rapide">
   <button class="bnav-item" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Accueil">

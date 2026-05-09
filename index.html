@@ -903,6 +903,11 @@ body{
         </div>
       </div>
     </div>
+  <div style="background:#FAF0EE;border-radius:12px;padding:16px;margin-top:16px;text-align:center;border:1px solid #F0D8D0">
+    <p style="font-size:13px;font-weight:700;color:#1E1616;margin-bottom:4px">Tu veux un plan nutrition 100% personnalisé ?</p>
+    <p style="font-size:12px;color:#7A6E6E;margin-bottom:12px">Calcul de ton métabolisme · Plan sur-mesure · Conseils apports protéines, glucides, lipides</p>
+    <a href="https://wa.me/33756834626?text=Ornella%20je%20fais%20le%20programme%20Booty%20Sculpt%20et%20je%20voudrais%20un%20accompagnement%20nutrition%20personnalis%C3%A9%20!" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#C96358;color:white;border-radius:20px;padding:10px 20px;text-decoration:none;font-size:13px;font-weight:700">💬 Je veux mon plan nutrition → +40€/mois</a>
+  </div>
   </div>
   </div>
 </section>
@@ -2177,9 +2182,16 @@ body{
 
 <!-- FINAL -->
 <div class="final-hero">
-  <h2>Programme terminé.<br><em>Et maintenant ?</em></h2>
-  <p>Tu as transformé ton corps en 8 semaines. Si tu veux continuer avec un suivi personnalisé, je suis là.</p>
-  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20J%27ai%20termin%C3%A9%20Booty%20Sculpt%202026%20%F0%9F%8F%86" class="btn-rouge" target="_blank">💬 Continuer avec Ornella →</a>
+  <div style="background:linear-gradient(135deg,#C96358,#9A4040);border-radius:16px;padding:24px;color:white;text-align:center;margin:0 0 20px">
+    <div style="font-size:36px;margin-bottom:8px">🏆</div>
+    <h2 style="font-size:20px;font-weight:800;margin-bottom:8px;color:white">Programme terminé !</h2>
+    <p style="font-size:14px;opacity:.9;margin-bottom:16px;line-height:1.6">Tu as tout donné pendant 8 semaines. Maintenant partage ta transformation — tu vas motiver d'autres femmes !</p>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <a href="https://wa.me/33756834626?text=Ornella%20j%27ai%20termin%C3%A9%20le%20programme%20Booty%20Sculpt%20!%20Je%20veux%20te%20montrer%20mes%20r%C3%A9sultats%20%F0%9F%8D%91%F0%9F%94%A5" target="_blank" style="background:white;color:#C96358;border-radius:20px;padding:12px 20px;text-decoration:none;font-size:13px;font-weight:800;display:block">📸 Envoyer ma transformation à Ornella →</a>
+      <a href="https://wa.me/33756834626?text=Ornella%20j%27ai%20fini%20Booty%20Sculpt%20et%20je%20veux%20continuer%20!%20Quelles%20sont%20tes%20offres%20de%20coaching%20%3F" target="_blank" style="background:rgba(255,255,255,0.2);color:white;border:2px solid white;border-radius:20px;padding:12px 20px;text-decoration:none;font-size:13px;font-weight:700;display:block">💪 Continuer avec un coaching personnalisé →</a>
+      <a href="https://g.page/r/ornellafitcoaching/review" target="_blank" style="background:rgba(255,255,255,0.2);color:white;border:2px solid white;border-radius:20px;padding:12px 20px;text-decoration:none;font-size:13px;font-weight:700;display:block">⭐ Laisser un avis Google →</a>
+    </div>
+  </div>
   <div class="final-copy">© 2026 Ornella Fit Coaching · ornellafitcoaching.com</div>
 </div>
 
@@ -2297,14 +2309,24 @@ function openPhaseAndScroll(n){
 function markDone(btn,num){
   var isDone=btn.classList.toggle('done');
   var trigger=btn.closest('.seance-wrap').querySelector('.seance-btn');
+  var waId='wa-cta-'+num;
   if(isDone){
     btn.textContent='✓ Séance '+num+' terminée !';
     trigger.classList.add('done-state');
     localStorage.setItem('bs_s'+num,'done');
+    if(!document.getElementById(waId)){
+      var waDiv=document.createElement('div');
+      waDiv.id=waId;
+      waDiv.style.cssText='margin-top:12px;padding:12px;background:#F0FFF4;border-radius:10px;border:1px solid #C3E6CB;text-align:center';
+      waDiv.innerHTML='<p style="font-size:12px;color:#2D6A4F;margin-bottom:8px">💪 Séance terminée ! Partage ton ressenti avec Ornella</p><a href="https://wa.me/33756834626?text=Ornella%20je%20viens%20de%20terminer%20ma%20s%C3%A9ance%20Booty%20Sculpt%20!%20%F0%9F%8D%91" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:white;border-radius:20px;padding:8px 16px;text-decoration:none;font-size:12px;font-weight:700">💬 Envoyer mon ressenti →</a>';
+      btn.parentNode.insertBefore(waDiv,btn.nextSibling);
+    }
   }else{
     btn.textContent='Marquer comme terminée ✓';
     trigger.classList.remove('done-state');
     localStorage.removeItem('bs_s'+num);
+    var waEl=document.getElementById(waId);
+    if(waEl) waEl.remove();
   }
   updateGlobalProgress();
 }
@@ -2337,5 +2359,9 @@ document.querySelectorAll('.btn-done').forEach(function(btn){
   }
 });
 </script>
+<div style="position:fixed;bottom:20px;right:16px;z-index:999;display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+  <a href="https://wa.me/33756834626?text=Bonjour%20Ornella%20!%20Je%20fais%20ton%20programme%20Booty%20Sculpt%20et%20j%27ai%20une%20question" target="_blank" style="background:#25D366;color:white;border-radius:50px;padding:12px 18px;text-decoration:none;font-size:13px;font-weight:700;box-shadow:0 4px 15px rgba(37,211,102,0.4);display:flex;align-items:center;gap:8px;white-space:nowrap">💬 Question à Ornella</a>
+  <a href="https://www.ornellafitcoaching.com/offres.html" target="_blank" style="background:#C96358;color:white;border-radius:50px;padding:12px 18px;text-decoration:none;font-size:13px;font-weight:700;box-shadow:0 4px 15px rgba(201,99,88,0.4);display:flex;align-items:center;gap:8px;white-space:nowrap">🚀 Coaching personnalisé</a>
+</div>
 </body>
 </html>

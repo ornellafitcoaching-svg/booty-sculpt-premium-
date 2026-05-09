@@ -977,6 +977,13 @@ body{
       <div style="font-weight:700;color:var(--dark);font-size:.9rem;margin-bottom:6px">Photo avant / après</div>
       <div style="font-size:.82rem;color:var(--muted);line-height:1.65">Prends une photo le jour 1, à mi-programme (sem. 5) et finale (sem. 8). Même tenue, même lumière. La transformation est souvent plus visible sur les photos que sur la balance.</div>
     </div>
+    <div style="background:white;border-radius:14px;border:1px solid #F0E8E0;padding:16px;text-align:center;margin-top:4px">
+      <div style="font-size:1.1rem;margin-bottom:6px">💾</div>
+      <div style="font-weight:700;color:var(--dark);font-size:.9rem;margin-bottom:4px">Sauvegarder mes mesures</div>
+      <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px;line-height:1.6">Copie ton récapitulatif et envoie-le par email ou WhatsApp pour ne jamais perdre tes données.</div>
+      <button onclick="exportMesures()" style="background:var(--rouge);color:white;border:none;border-radius:10px;padding:12px 20px;font-size:13px;font-weight:700;cursor:pointer;width:100%;font-family:inherit">📋 Copier mon récapitulatif</button>
+      <div id="export-confirm" style="display:none;margin-top:10px;font-size:12px;color:#4A7A1E;font-weight:600">✅ Copié ! Colle-le dans WhatsApp ou tes notes.</div>
+    </div>
   </div>
   </div>
 </section>
@@ -2228,6 +2235,44 @@ document.addEventListener('DOMContentLoaded',function(){
 
 // Suivi persistence
 function saveSuivi(el,key){localStorage.setItem('suivi_'+key,el.value);}
+
+function exportMesures(){
+  var sections=[
+    {label:'Semaine 1 — Avant le programme',prefix:'1'},
+    {label:'Semaine 3 — Après Phase 1',prefix:'2'},
+    {label:'Semaine 5 — Mi-programme',prefix:'3'},
+    {label:'Semaine 8 — Fin du programme',prefix:'4'}
+  ];
+  var champs=['Poids (kg)','Tour de hanches (cm)','Tour de taille (cm)','Tour de cuisse (cm)','Ressenti énergie /10'];
+  var lines=['🍑 BOOTY SCULPT 2026 — Mes mesures',''];
+  sections.forEach(function(s){
+    lines.push('📍 '+s.label);
+    var hasData=false;
+    champs.forEach(function(c){
+      var v=localStorage.getItem('suivi_'+s.prefix+'_'+c);
+      if(v){lines.push('  • '+c+' : '+v);hasData=true;}
+    });
+    if(!hasData) lines.push('  (pas encore rempli)');
+    lines.push('');
+  });
+  lines.push('Sauvegardé le '+new Date().toLocaleDateString('fr-FR'));
+  var text=lines.join('\n');
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){
+      var el=document.getElementById('export-confirm');
+      el.style.display='block';
+      setTimeout(function(){el.style.display='none';},4000);
+    });
+  } else {
+    var ta=document.createElement('textarea');
+    ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');
+    document.body.removeChild(ta);
+    var el=document.getElementById('export-confirm');
+    el.style.display='block';
+    setTimeout(function(){el.style.display='none';},4000);
+  }
+}
 function loadSuivi(){document.querySelectorAll('[oninput^="saveSuivi"]').forEach(function(el){var m=el.getAttribute('oninput').match(/'([^']+)'\)/);if(m){var v=localStorage.getItem('suivi_'+m[1]);if(v)el.value=v;}});}
 document.addEventListener('DOMContentLoaded',function(){loadSuivi();});
 

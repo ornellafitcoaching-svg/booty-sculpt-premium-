@@ -1092,7 +1092,13 @@ body{
   <div class="sec-label">Les séances</div>
   <h2 class="sec-title">12 séances.<br><em>Commençons.</em></h2>
   <div class="sec-divider"></div>
-  <p style="font-size:.88rem;color:var(--muted);margin-bottom:24px">Ouvre une phase → une séance → et commence. Chaque exercice a sa vidéo.</p>
+  <p style="font-size:.88rem;color:var(--muted);margin-bottom:24px">Ouvre une phase → une séance → et commence. Chaque exercice technique a sa vidéo de démonstration.</p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
+  <button onclick="openPhaseAndScroll(1)" style="flex:1;padding:10px;background:#FAF0EE;border:1.5px solid #C96358;border-radius:8px;color:#C96358;font-size:13px;font-weight:700;cursor:pointer;min-width:120px">Phase 1 — Activation</button>
+  <button onclick="openPhaseAndScroll(2)" style="flex:1;padding:10px;background:#FAF0EE;border:1.5px solid #C96358;border-radius:8px;color:#C96358;font-size:13px;font-weight:700;cursor:pointer;min-width:120px">Phase 2 — Volume</button>
+  <button onclick="openPhaseAndScroll(3)" style="flex:1;padding:10px;background:#FAF0EE;border:1.5px solid #C96358;border-radius:8px;color:#C96358;font-size:13px;font-weight:700;cursor:pointer;min-width:120px">Phase 3 — Sculpt</button>
+  <button onclick="openPhaseAndScroll(4)" style="flex:1;padding:10px;background:#FAF0EE;border:1.5px solid #C96358;border-radius:8px;color:#C96358;font-size:13px;font-weight:700;cursor:pointer;min-width:120px">Phase 4 — Sprint Final</button>
+</div>
   <div class="phases-stack">
 <div class="phase-wrap" id="ph1">
   <button class="phase-btn" onclick="togglePhase(this)">
@@ -1549,6 +1555,7 @@ body{
   </div>
   <div class="ex-cue">Atterris en souplesse, genoux fléchis — pas de bruit</div>
   <div class="ex-steps"><div class="ex-steps-title">Exécution</div><ol><li>Pars d'un squat profond, pieds à largeur d'épaules</li><li>Explose vers le haut en sautant, bras vers l'avant pour l'élan</li><li>Atterris SILENCIEUSEMENT en squat — fléchis les genoux pour absorber</li><li>Redémarre immédiatement — pas de pause entre les répétitions</li></ol></div>
+  <div style="background:#F0F7E6;border-radius:10px;padding:12px 14px;margin-top:10px;border-left:3px solid #6AAF3D"><div style="font-size:11px;font-weight:700;color:#4A7A1E;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">🔄 Alternatives</div><div style="margin-bottom:6px"><span style="font-size:11px;font-weight:700;color:#4A7A1E">Sans saut : </span><span style="font-size:12px;color:#2D4A1A">Même mouvement, sans impulsion. Compte 3 secondes à la montée, 3 à la descente. Même bénéfice musculaire.</span></div><div><span style="font-size:11px;font-weight:700;color:#C96358">Débutante : </span><span style="font-size:12px;color:#3D2B24">Réduis à 2 tours au lieu du nombre indiqué. Prends 45s de repos entre chaque série. Augmente progressivement.</span></div></div>
   <a href="https://www.youtube.com/watch?v=Swf_f7SHdUI" target="_blank" rel="noopener" class="ex-vid-btn"><span class="ex-vid-icon">▶</span><span>Voir la démonstration</span></a>
 </div><div class="ex-card">
   <div class="ex-row-top">
@@ -1560,6 +1567,7 @@ body{
   </div>
   <div class="ex-cue">Alterne les jambes à chaque saut, reste légère</div>
   <div class="ex-steps"><div class="ex-steps-title">Exécution</div><ol><li>Pars en position de fente basse (genou arrière proche du sol)</li><li>Saute et échange les jambes dans les airs</li><li>Atterris en fente de l'autre côté, genou avant à 90°</li><li>Enchaîne immédiatement — reste souple lors de l'atterrissage</li></ol></div>
+  <div style="background:#F0F7E6;border-radius:10px;padding:12px 14px;margin-top:10px;border-left:3px solid #6AAF3D"><div style="font-size:11px;font-weight:700;color:#4A7A1E;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">🔄 Alternatives</div><div style="margin-bottom:6px"><span style="font-size:11px;font-weight:700;color:#4A7A1E">Sans saut : </span><span style="font-size:12px;color:#2D4A1A">Même mouvement, sans impulsion. Compte 3 secondes à la montée, 3 à la descente. Même bénéfice musculaire.</span></div><div><span style="font-size:11px;font-weight:700;color:#C96358">Débutante : </span><span style="font-size:12px;color:#3D2B24">Réduis à 2 tours au lieu du nombre indiqué. Prends 45s de repos entre chaque série. Augmente progressivement.</span></div></div>
   <a href="https://www.youtube.com/watch?v=XJAGPxkEMR4" target="_blank" rel="noopener" class="ex-vid-btn"><span class="ex-vid-icon">▶</span><span>Voir la démonstration</span></a>
 </div><div class="ex-card">
   <div class="ex-row-top">
@@ -1656,6 +1664,7 @@ body{
   </div>
   <div class="ex-cue">Squat sauté 30 s → Donkey kick 20 → Fente 20</div>
   <div class="ex-steps"><div class="ex-steps-title">Exécution</div><ol><li>Squat sauté : 30 secondes à fond, atterrissage silencieux</li><li>ENCHAÎNE : Donkey kick 20 reps par côté (= 40 total) sans poser le genou</li><li>ENCHAÎNE : 20 fentes alternées (10/côté)</li><li>Repos 90 s. 3 tours. Ton cardio va exploser — c'est le but</li></ol></div>
+  <div style="background:#F0F7E6;border-radius:10px;padding:12px 14px;margin-top:10px;border-left:3px solid #6AAF3D"><div style="font-size:11px;font-weight:700;color:#4A7A1E;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">🔄 Alternatives</div><div style="margin-bottom:6px"><span style="font-size:11px;font-weight:700;color:#4A7A1E">Sans saut : </span><span style="font-size:12px;color:#2D4A1A">Même mouvement, sans impulsion. Compte 3 secondes à la montée, 3 à la descente. Même bénéfice musculaire.</span></div><div><span style="font-size:11px;font-weight:700;color:#C96358">Débutante : </span><span style="font-size:12px;color:#3D2B24">Réduis à 2 tours au lieu du nombre indiqué. Prends 45s de repos entre chaque série. Augmente progressivement.</span></div></div>
 </div><div class="ex-card">
   <div class="ex-row-top">
     <div class="ex-info">
@@ -1885,6 +1894,7 @@ body{
   </div>
   <div class="ex-cue">40 s effort / 20 s repos — donne tout à chaque tour</div>
   <div class="ex-steps"><div class="ex-steps-title">Exécution</div><ol><li>40 s de squat sauté (intensité maximale) → 20 s repos</li><li>40 s de donkey kick alterné → 20 s repos</li><li>40 s de fentes sautées → 20 s repos</li><li>= 1 tour. Répète 4 fois. Ton corps va transformer en 20 minutes</li></ol></div>
+  <div style="background:#F0F7E6;border-radius:10px;padding:12px 14px;margin-top:10px;border-left:3px solid #6AAF3D"><div style="font-size:11px;font-weight:700;color:#4A7A1E;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">🔄 Alternatives</div><div style="margin-bottom:6px"><span style="font-size:11px;font-weight:700;color:#4A7A1E">Sans saut : </span><span style="font-size:12px;color:#2D4A1A">Même mouvement, sans impulsion. Compte 3 secondes à la montée, 3 à la descente. Même bénéfice musculaire.</span></div><div><span style="font-size:11px;font-weight:700;color:#C96358">Débutante : </span><span style="font-size:12px;color:#3D2B24">Réduis à 2 tours au lieu du nombre indiqué. Prends 45s de repos entre chaque série. Augmente progressivement.</span></div></div>
 </div><div class="ex-card">
   <div class="ex-row-top">
     <div class="ex-info">
@@ -2017,6 +2027,7 @@ body{
   </div>
   <div class="ex-cue">Donne absolument tout — c'est ta dernière séance !</div>
   <div class="ex-steps"><div class="ex-steps-title">Exécution</div><ol><li>45 s squat sauté → 15 s repos → 45 s donkey kick alterné → 15 s repos</li><li>45 s fentes sautées → 15 s repos → 45 s mountain climber → 15 s repos</li><li>= 1 tour. 5 tours au total</li><li>C'est ta DERNIÈRE séance — donne absolument tout</li></ol></div>
+  <div style="background:#F0F7E6;border-radius:10px;padding:12px 14px;margin-top:10px;border-left:3px solid #6AAF3D"><div style="font-size:11px;font-weight:700;color:#4A7A1E;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">🔄 Alternatives</div><div style="margin-bottom:6px"><span style="font-size:11px;font-weight:700;color:#4A7A1E">Sans saut : </span><span style="font-size:12px;color:#2D4A1A">Même mouvement, sans impulsion. Compte 3 secondes à la montée, 3 à la descente. Même bénéfice musculaire.</span></div><div><span style="font-size:11px;font-weight:700;color:#C96358">Débutante : </span><span style="font-size:12px;color:#3D2B24">Réduis à 2 tours au lieu du nombre indiqué. Prends 45s de repos entre chaque série. Augmente progressivement.</span></div></div>
 </div><div class="ex-card">
   <div class="ex-row-top">
     <div class="ex-info">

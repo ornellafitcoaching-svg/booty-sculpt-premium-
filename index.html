@@ -628,9 +628,51 @@ body{
   table { display: block; overflow-x: auto; white-space: nowrap; }
   body { font-size: 15px; }
 }
+/* ── ACCÈS PRIVÉ ── */
+#access-screen{
+  position:fixed;inset:0;z-index:99999;
+  background:#1C1210;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:40px 28px;
+  font-family:'DM Sans',sans-serif;
+}
+#access-screen.off{display:none;}
+.ac-logo{font-size:3rem;margin-bottom:10px;}
+.ac-title{color:#fff;font-size:1.35rem;font-weight:700;margin-bottom:4px;text-align:center;}
+.ac-sub{color:rgba(255,255,255,.4);font-size:.83rem;margin-bottom:32px;text-align:center;}
+.ac-inp{
+  width:100%;padding:15px 18px;
+  background:rgba(255,255,255,.07);
+  border:1.5px solid rgba(255,255,255,.15);
+  border-radius:14px;color:#fff;
+  font-size:16px;font-family:'DM Sans',sans-serif;
+  margin-bottom:12px;text-align:center;letter-spacing:.1em;
+  -webkit-appearance:none;
+}
+.ac-inp:focus{outline:none;border-color:#C96358;}
+.ac-btn{
+  width:100%;padding:15px;
+  background:#C96358;color:#fff;
+  border:none;border-radius:14px;
+  font-size:1rem;font-weight:700;
+  font-family:'DM Sans',sans-serif;cursor:pointer;
+}
+.ac-btn:active{opacity:.85;}
+.ac-err{color:#ff6b6b;font-size:.83rem;text-align:center;margin-top:10px;min-height:18px;}
 </style>
 </head>
 <body>
+
+<!-- ACCÈS PRIVÉ -->
+<div id="access-screen">
+  <div class="ac-logo">🍑</div>
+  <div class="ac-title">Booty Sculpt 2026</div>
+  <div class="ac-sub">Accès réservé aux acheteuses<br>Saisis ton code d'accès reçu par email</div>
+  <input type="password" id="ac-inp" class="ac-inp" placeholder="Code d'accès" autocomplete="current-password">
+  <button class="ac-btn" onclick="checkAccess()">Accéder à mon programme →</button>
+  <div class="ac-err" id="ac-err"></div>
+</div>
 
 <div id="pbar"></div>
 
@@ -2350,6 +2392,33 @@ body{
 </div>
 
 <script>
+// ── ACCÈS PRIVÉ ──
+(function(){
+  var CODE='BS2026';
+  var params=new URLSearchParams(window.location.search);
+  var urlCode=params.get('access');
+  if(urlCode===CODE||sessionStorage.getItem('bs_access')==='1'){
+    sessionStorage.setItem('bs_access','1');
+    document.getElementById('access-screen').classList.add('off');
+    return;
+  }
+})();
+function checkAccess(){
+  var CODE='BS2026';
+  var v=document.getElementById('ac-inp').value.trim();
+  if(v===CODE){
+    sessionStorage.setItem('bs_access','1');
+    document.getElementById('access-screen').classList.add('off');
+  } else {
+    document.getElementById('ac-err').textContent='Code incorrect — vérifie ton email.';
+    document.getElementById('ac-inp').value='';
+  }
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var inp=document.getElementById('ac-inp');
+  if(inp) inp.addEventListener('keydown',function(e){ if(e.key==='Enter') checkAccess(); });
+});
+
 // Progress bar
 window.addEventListener('scroll',function(){
   var p=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
